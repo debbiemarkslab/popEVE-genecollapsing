@@ -26,10 +26,30 @@ For each protein-coding gene, `gene_collapse.py` computes a p-value reflecting w
 ### De novo variant sources
 
 **DDD cohort** — Deciphering Developmental Disorders study.
-- Paper: [Evidence for 28 genetic disorders discovered by combining healthcare and research data](https://www.nature.com/articles/s41586-020-2832-5) — *Nature*, 2020
+[Evidence for 28 genetic disorders discovered by combining healthcare and research data](https://www.nature.com/articles/s41586-020-2832-5) — *Nature*, 2020
 
 **ASD cohorts** (`ASD_Affected`, `ASD_Unaffected`) — Autism Sequencing Consortium.
-- Paper: [Integrating de novo and inherited variants in 42,607 autism cases identifies mutations in new moderate-risk genes](https://www.nature.com/articles/s41588-022-01148-2) — *Nature Genetics*, 2022
+[Integrating de novo and inherited variants in 42,607 autism cases identifies mutations in new moderate-risk genes](https://www.nature.com/articles/s41588-022-01148-2) — *Nature Genetics*, 2022
+
+### GRCh37 Background mutation rates
+[A framework for the interpretation of de novo mutation in human disease](https://www.nature.com/articles/ng.3050#Sec18) — *Nature Genetics*, 2014
+
+## Data Availability
+ 
+### Per-protein mutation rates
+ 
+The per-protein mutation rate files required by `build_all_rates.py` and `gene_collapse.py` are too large to host on GitHub. They are available for download from Zenodo:
+ 
+> **[Zenodo DOI — link to be added on deposit]**
+ 
+After downloading, extract the archive and point `--rates-dir` (in `build_all_rates.py`) and the `rates_filepath` column in your genes file at the extracted directory. The expected structure is:
+ 
+```
+rates/
+├── PROTEIN_A.csv
+├── PROTEIN_B.csv
+└── ...
+```
 
 ---
 
