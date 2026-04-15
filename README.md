@@ -1,8 +1,8 @@
-# popEVE Gene Collapsing
+# popEVE Gene Collapse
 
 Score and rank genes for de novo variant enrichment using weighted mutation rate models.
 
-For each protein-coding gene, `gene_collapse.py` computes a p-value reflecting whether the observed de novo variants in a cohort carry unexpectedly high pathogenicity scores given the gene's background mutation rate. Scores are drawn from a user-specified variant effect model (e.g. popEVE), normalized relative to the 90th percentile of the proteome-wide distribution, and used as weights in a Poisson simulation. Three complementary tests are run:
+For each protein-coding gene, `gene_collapse.py` computes a p-value reflecting whether the observed de novo variants in a cohort carry unexpectedly high pathogenicity scores given the gene's background mutation rate. Scores are drawn from a user-specified variant effect model (e.g. [popEVE](https://pop.evemodel.org)), normalized relative to the 90th percentile of the proteome-wide distribution, and used as weights in a Poisson simulation. Three complementary tests are run:
 
 | Test | Description |
 |---|---|
@@ -11,6 +11,25 @@ For each protein-coding gene, `gene_collapse.py` computes a p-value reflecting w
 | `pvalue_only_proteome` | Score enrichment tested against the proteome-wide score distribution only |
 
 `build_all_rates.py` is a helper script that generates the proteome-wide rates file required as input to `gene_collapse.py`.
+
+---
+
+## References
+
+### Variant effect model
+
+**popEVE** — Proteome-wide evolutionary model for variant pathogenicity scoring.
+- Paper: [Proteome-wide model for human disease genetics](https://www.nature.com/articles/s41588-025-02400-1) — *Nature Genetics*, 2025
+- Scores: [pop.evemodel.org](https://pop.evemodel.org)
+- Code: [github.com/debbiemarkslab/popEVE](https://github.com/debbiemarkslab/popEVE)
+
+### De novo variant sources
+
+**DDD cohort** — Deciphering Developmental Disorders study.
+- Paper: [Evidence for 28 genetic disorders discovered by combining healthcare and research data](https://www.nature.com/articles/s41586-020-2832-5) — *Nature*, 2020
+
+**ASD cohorts** (`ASD_Affected`, `ASD_Unaffected`) — Autism Sequencing Consortium.
+- Paper: [Integrating de novo and inherited variants in 42,607 autism cases identifies mutations in new moderate-risk genes](https://www.nature.com/articles/s41588-022-01148-2) — *Nature Genetics*, 2022
 
 ---
 
@@ -118,7 +137,7 @@ Tab-separated, one row per protein.
 | `protein` | Protein identifier — must match values in the variants file |
 | `gene` | HGNC gene symbol |
 | `chrom` | Chromosome — use `X` for X-linked genes |
-| `rates_filepath` | Path to the per-protein rates `.pkl` file |
+| `rates_filepath` | Path to the per-protein rates `.csv` file |
 
 **Input: all_rates file** (`--all-rates`)
 
@@ -143,10 +162,10 @@ Tab-separated observed de novo variants.
 
 **Output**
 
-A pickled pandas DataFrame saved to:
+A pandas DataFrame saved to:
 
 ```
-<outdir>/<study>_<model>_<norm>_<rounding>_<n_samples>.pkl
+<outdir>/<study>_<model>_<norm>_<rounding>_<n_samples>.csv
 ```
 
 | Column | Description |
