@@ -38,9 +38,7 @@ For each protein-coding gene, `gene_collapse.py` computes a p-value reflecting w
  
 ### Per-protein mutation rates
  
-The per-protein mutation rate files required by `build_all_rates.py` and `gene_collapse.py` are too large to host on GitHub. They are available for download from Zenodo:
- 
-> **[Zenodo DOI — link to be added on deposit]**
+The per-protein mutation rate files required by `build_all_rates.py` and `gene_collapse.py` are too large to host on GitHub. They are available for [download from Zenodo](10.5281/zenodo.19599066).
  
 After downloading, extract the archive and point `--rates-dir` (in `build_all_rates.py`) and the `rates_filepath` column in your genes file at the extracted directory. The expected structure is:
  
